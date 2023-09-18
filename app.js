@@ -24,7 +24,8 @@ app.use('*', userData);
 // ==================== API's ====================
 app.use(process.env.API_PREFIX, [
 	require('./app/apis/auth/endpoints'),
-	require('./app/apis/categories/endpoints')
+	require('./app/apis/categories/endpoints'),
+	require('./app/apis/subcategories/endpoints')
 ]);
 
 

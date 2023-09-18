@@ -44,7 +44,7 @@ exports.get_categories = async (request, response) => {
         if (search) {
             query.category_name = { $regex: search, $options: 'i' };
         }
-        
+
         const sortOptions = sort || 'category_name';
         const sortOrder = order || 'asc';
 

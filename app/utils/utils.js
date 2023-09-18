@@ -15,7 +15,7 @@ exports.errorHandler = (error, model_name) => {
     }
 
     if (error.message.includes(`${model_name} validation failed`)) {
-        Object.values(error.errors).map((properties) => {
+        Object.values(error.errors).map(properties => {
             if (properties.properties) {
                 errors[properties.properties.path] = properties.properties.message;
             }else{

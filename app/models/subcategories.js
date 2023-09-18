@@ -1,24 +1,30 @@
 const mongoose = require('mongoose');
 const { isSlug } = require('validator');
 
-const CategoriesSchema = new mongoose.Schema(
+const SubcategoriesSchema = new mongoose.Schema(
     {
-        category_name: {
+        parent_category_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'categories',
+            required: [true, "Parent Category ID is required"]
+        },
+        subcategory_name: {
             type: String,
             required: [true, "Category name is required"],
             unique: [true, "Category is already taken"]
         },
-        category_slug: {
+        subcategory_slug: {
             type: String,
             validate: [isSlug, "Invalid category slug"]
         },
-        category_status: {
+        subcategory_status: {
             type: String,
             enum: ["published", "draft"],
             default: "published"
-        }
+        }        
     },
     { timestamps: true }
 );
 
-module.exports = mongoose.model('categories', CategoriesSchema);
+
+module.exports = mongoose.model('subcategories', SubcategoriesSchema);
